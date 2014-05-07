@@ -1,0 +1,11 @@
+﻿body {
+    background-image:url("http://fc05.deviantart.net/fs71/i/2013/040/3/5/wood_texture_honey_maple_light_grain_wooden_panel_by_texturex_com-d5uexw6.jpg");
+    text-decoration:solid;
+    color:darkblue;
+    font-size: 25px;
+}
+
+td img {
+    width: 150px;
+    height: 150px;
+}

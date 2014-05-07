@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="mainApp">
+
+<head>
+    <title>BACK IN THE DAY CARTOONS!!</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+</head>
+<body> 
+    <div ng-controller="CreateController">
+       
+        <input type="text" style="width:400px; height:40px;" ng-model="cartoon.name" placeholder="Enter your Favorite Cartoon" />
+        <input type="text" style="width:400px; height:40px;" ng-model="cartoon.year" placeholder="What was the date of inception?" />
+        <input type="text" style="width:425px; height:40px;" ng-model="cartoon.img" placeholder="Enter your URL Image for the cartoon" />
+        
+        <div class="btn btn-default" ng-click="addCartoon()">Add Cartoon</div>
+    </div>
+    <div ng-controller="DisplayController">
+        <input type="text" ng-model="search" placeholder="Search for Cartoon!" />
+
+        <table class="table table-hover table-striped ">
+            <tr ng-repeat="cartoon in cartoons | orderBy:'name' | filter:search">
+                <td>{{cartoon.name | uppercase}}</td>
+                <td>{{cartoon.year}}</td>
+                <td><img ng-src="{{cartoon.img}}" /></td>
+                <td>
+                    <button class="btn btn-warning" ng-click="editCartoon(cartoon)">Edit</button>
+                    <button class="btn btn-success" ng-click="deleteCartoon(cartoon)">Delete</button>
+                </td>
+            </tr>
+        </table>
+        {{factory.value}}
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">{{modal.name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Add Cartoon" ng-model="modal.name" />
+                        <input type="text" placeholder="Add Original Air Date" ng-model="modal.year" />
+                        <input type="text" placeholder="Add IMG URL" ng-modal="modal.img" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="saveCartoon(modal)">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/main.js"></script>
+</body>
+</html>
